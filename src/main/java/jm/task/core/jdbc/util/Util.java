@@ -10,9 +10,11 @@ public class Util {
 
     public static Connection getConnection() {
         try {
-            return DriverManager.getConnection(URL, USERNAME,PASSWORD);
+            Connection con = DriverManager.getConnection(URL, USERNAME,PASSWORD);
+            con.setAutoCommit(false);
+            return con;
         } catch (SQLException s) {
-            System.out.println("");
+            s.printStackTrace();
         }
         return getConnection();
     }

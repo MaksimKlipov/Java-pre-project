@@ -19,7 +19,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
         try {
-            con.setAutoCommit(false);
             st = con.prepareStatement(
                     "CREATE TABLE IF NOT EXISTS Users(" +
                             "id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
@@ -38,7 +37,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try {
-            con.setAutoCommit(false);
             st = con.prepareStatement(
                     "DROP TABLE IF EXISTS Users"
             );
@@ -53,7 +51,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void saveUser(String name, String lastName, byte age) {
         try {
-            con.setAutoCommit(false);
             st = con.prepareStatement(
                     "INSERT INTO Users(name, lastName, age) VALUES (?, ?, ?)"
             );
@@ -72,7 +69,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void removeUserById(long id) {
         try {
-            con.setAutoCommit(false);
             st = con.prepareStatement(
                     "DELETE FROM Users WHERE id = ?"
             );
@@ -89,7 +85,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
         try {
-            con.setAutoCommit(false);
             st = con.prepareStatement(
                     "SELECT * FROM Users"
             );
@@ -113,7 +108,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         try {
-            con.setAutoCommit(false);
             st = con.prepareStatement(
                     "DELETE FROM Users"
             );
